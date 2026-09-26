@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+    environment{
+        MY_APP_CONFIG ='TEST'
+    }
     stages {
         stage('Build') {
             agent{
@@ -48,6 +51,7 @@ pipeline {
                 sh '''
                   npm install -g netlify-cli
                   netlify --version
+                  echo MY_APP_CONFIG 
                 '''
              }
         }
