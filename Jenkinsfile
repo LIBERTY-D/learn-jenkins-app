@@ -3,6 +3,7 @@ pipeline {
 
     environment{
         MY_APP_CONFIG ='TEST'
+        TEST_SECRET=  credentials("my-secret")
     }
     stages {
         stage('Build') {
@@ -52,6 +53,7 @@ pipeline {
                   npm install -g netlify-cli
                   netlify --version
                   echo $MY_APP_CONFIG 
+                  echo  "Test  secret from jenkins $TEST_SECRET"
                 '''
              }
         }
